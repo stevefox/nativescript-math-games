@@ -1,5 +1,6 @@
 <StackLayout class="p-20">
-    <Label text="Tap the button" class="h1 text-center"></Label>
-    <Button text="TAP" (tap)="onTap()" class="btn btn-primary btn-active"></Button>
-    <Label [text]="message" class="h2 text-center" textWrap="true"></Label>
+  <Label text="Powers of 2" class="h2 text-left"></Label>
+  <HtmlView html="If 2<sup>x</sup> = {{ problem.hint }}, what is x?" class="text-left"></HtmlView>
+  <TextField hint="x is..." [(ngModel)]="guess" ></TextField>
+  <Button text="Check" (tap)="check()" class="btn btn-primary btn-active"></Button>
 </StackLayout>
