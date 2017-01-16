@@ -1,6 +1,10 @@
 <StackLayout class="p-20">
+  <Label text="{{ correct }} out of {{ total }}"></Label>
+  <Label text="Timer" class="text-right"></Label>
+  <Switch [checked]="timed" [(ngModel)]="timed" propertyChange="onCheckChange($event)" ></Switch>
   <Label text="Powers of 2" class="h2 text-left"></Label>
-  <HtmlView html="If 2<sup>x</sup> = {{ problem.hint }}, what is x?" class="text-left"></HtmlView>
-  <TextField hint="x is..." [(ngModel)]="guess" ></TextField>
+  <HtmlView html="{{ problem.hintHtmlTemplate }}" class="text-left"></HtmlView>
+  <TextField hint="x is ..." keyboardType="number" [(ngModel)]="guess" ></TextField>
   <Button text="Check" (tap)="check()" class="btn btn-primary btn-active"></Button>
+  <Progress [value]="countdown" [maxValue]="maxCountdown"></Progress>
 </StackLayout>

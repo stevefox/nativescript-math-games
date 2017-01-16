@@ -1,9 +1,11 @@
 import { Component } from "@angular/core";
-import { setTimeout } from "timer";
+import { setInterval, clearInterval } from "timer";
+import { Page  } from "ui/page";
 
 class Problem {
     hint: number;
     answer: number;
+    hintHtmlTemplate: string;
 }
 
 @Component({
@@ -14,16 +16,33 @@ export class AppComponent {
     problem: Problem;
     guess: string;
 
-    constructor() {
+    correct: number;
+    total: number;
+
+    timer: any;
+    timed: boolean;
+    countdown: number;
+    maxCountdown: number;
+    questionInProgress: boolean;
+
+    constructor(private page: Page) {
         this.problem = new Problem();
         this.generate();
-        this.guess = ''
+        this.timed = false;
+
+        this.maxCountdown = 5000;
+        this.countdown = 5000;
+
+        this.correct = 0;
+        this.total = 0;
+        this.questionInProgress = false;
     }
+
 
     private _generate_exponent() {
         return Math.floor(Math.random()*11);
     }
-    
+
     public generate() {
         // Create a new problem
         let next_answer: number = this._generate_exponent();
@@ -36,18 +55,63 @@ export class AppComponent {
         // Configure the new problem
         this.problem.answer = next_answer;
         this.problem.hint = Math.pow(2, this.problem.answer);
+        this.problem.hintHtmlTemplate = `If 2<sup>x</sup> = ${this.problem.hint}, what is x?`;
 
         // Reset guess
+        this.total += 1;
         this.guess = '';
+        this.questionInProgress = true;
+
+        this.setTimer();
+    }
+
+    setTimer() {
+        // Reset the timer
+        this.clearTimer();
+
+        // Set update the counter every 20ms (50Hz)
+        this.timer = setInterval(() => {
+            if (this.timed) {
+                if (this.questionInProgress) {
+                    if (this.countdown < this.maxCountdown) {
+                        // Count up to maxCountdown
+                        this.countdown += 20;
+                    } else {
+                        // When time expires, check
+                        this.check();
+                    }
+                }
+            } else {
+                this.countdown = 0;
+            }
+        }, 20);
+    }
+
+    clearTimer() {
+        if (this.timer != null) {
+            clearInterval(this.timer);
+        }
+        this.countdown = 0;        
     }
 
     check() {
         let numericGuess: number = +this.guess;
         if (numericGuess == this.problem.answer) {
+            this.correct += 1;
+            this.generate();
+        } else if(this.countdown >= this.maxCountdown) {
+            this.guess = '';            
             this.generate();
         } else {
-            alert(`Wrong! Guess again!`);
-            this.guess = '';
+            alert("Try again!");
+        }
+    }
+
+    onCheckChange(event) {
+        if (this.timed) {
+            this.setTimer();
+        } else {
+            this.clearTimer();
         }
     }
 }
