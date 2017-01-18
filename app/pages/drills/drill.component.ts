@@ -25,6 +25,8 @@ export class DrillComponent implements OnInit {
     }
 
     ngOnInit() {
+	this.page.actionBarHidden = true;
+
         // Create Data
         this.problem = new Problem();
         this.timed = false;
