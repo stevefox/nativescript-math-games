@@ -3,7 +3,8 @@ This is a mobile app for Android and iOS built in Native Script. It started out 
 To run this project, first head over to [NativeScript.org](https://www.nativescript.org) and follow Native Script installation instructions in the [Quick Setup Guide](https://docs.nativescript.org/start/quick-setup) for your platform. If you already have Native Script installed, you can run it in an Android emulator using:
 
 ```bash
-tns run android --emulator
+tns build android
+tns run android --emulator --watch
 ```
 
 # Stack
