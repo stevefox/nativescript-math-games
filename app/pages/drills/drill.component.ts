@@ -32,12 +32,13 @@ export class DrillComponent implements OnInit {
         this.timed = false;
         this.questionInProgress = false;
         
-        this.generate();
         this.maxCountdown = 5000;
         this.countdown = 5000;
 
         this.correct = 0;
         this.total = 0;
+
+        this.generate();
     }
 
 
