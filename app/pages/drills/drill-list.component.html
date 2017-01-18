@@ -1,0 +1,10 @@
+<GridLayout  rows="auto, *">
+  <GridLayout row="0" columns="*, auto" class="title-bar">
+    <Label text="Drills"></Label>
+  </GridLayout>
+  <ListView [items]="drills" row="1" class="small-spacing" >
+    <template let-item="item">
+      <Label [text]="item.name" (tap)="onTap(item.route)" class="medium-spacing"></Label>
+    </template>
+  </ListView>
+</GridLayout>

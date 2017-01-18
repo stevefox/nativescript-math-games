@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+
 import { Problem } from '../../shared/problem/problem';
 import { setInterval, clearInterval } from "timer";
 import { Page  } from "ui/page";
@@ -7,7 +8,7 @@ import { Page  } from "ui/page";
     selector: "drill",
     templateUrl: "pages/drills/drill.component.html",
 })
-export class DrillComponent {
+export class DrillComponent implements OnInit {
     problem: Problem;
     guess: string;
 
@@ -21,9 +22,13 @@ export class DrillComponent {
     questionInProgress: boolean;
 
     constructor(private page: Page) {
+    }
+
+    ngOnInit() {
+        // Create Data
         this.problem = new Problem();
-        this.generate();
         this.timed = false;
+        this.generate();
 
         this.maxCountdown = 5000;
         this.countdown = 5000;
