@@ -1,12 +1,7 @@
 import { Component } from "@angular/core";
+import { Problem } from './shared/problem/problem';
 import { setInterval, clearInterval } from "timer";
 import { Page  } from "ui/page";
-
-class Problem {
-    hint: number;
-    answer: number;
-    hintHtmlTemplate: string;
-}
 
 @Component({
     selector: "my-app",
