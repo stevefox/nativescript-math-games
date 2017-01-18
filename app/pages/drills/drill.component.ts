@@ -25,19 +25,19 @@ export class DrillComponent implements OnInit {
     }
 
     ngOnInit() {
-	this.page.actionBarHidden = true;
-
+        this.page.actionBarHidden = true;
+        
         // Create Data
         this.problem = new Problem();
         this.timed = false;
+        this.questionInProgress = false;
+        
         this.generate();
-
         this.maxCountdown = 5000;
         this.countdown = 5000;
 
         this.correct = 0;
         this.total = 0;
-        this.questionInProgress = false;
     }
 
 
