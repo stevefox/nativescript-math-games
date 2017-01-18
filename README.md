@@ -12,7 +12,7 @@ tns run android --emulator
  - Ubuntu 14.04 Linux / Debian (sid)
  - emacs -nw
  - Dell XPS 13 9343 (Developer Edition)
- - You can see my dotfiles here [github dotfiles](github.com/stevefox/dotfiles).
+ - You can see my dotfiles here [github dotfiles](https://www.github.com/stevefox/dotfiles).
 
 ## Front-end (Android/iOS Client)
  - Native Script
