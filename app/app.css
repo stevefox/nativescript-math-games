@@ -12,6 +12,15 @@ components that have the btn class name.
     font-size: 18;
 }
 
+Page {
+    background-color: white;
+    font-size: 15;
+}
+
+TextField {
+    padding: 10;
+}
+
 /*
 In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme

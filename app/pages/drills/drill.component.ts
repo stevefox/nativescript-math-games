@@ -7,6 +7,7 @@ import { Page  } from "ui/page";
 @Component({
     selector: "drill",
     templateUrl: "pages/drills/drill.component.html",
+    styleUrls: ["pages/drills/drill.component.css"]
 })
 export class DrillComponent implements OnInit {
     problem: Problem;

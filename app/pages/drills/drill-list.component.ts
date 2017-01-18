@@ -10,6 +10,8 @@ import { Page } from "ui/page";
 export class DrillListComponent implements OnInit {
     drills: Array<Object> = [];
 
+    drillType: string;
+
     constructor(private page: Page, private router: Router) {
 
     }
@@ -19,10 +21,11 @@ export class DrillListComponent implements OnInit {
         this.page.actionBarHidden = true;
 
         // Mock up hard-coded list of drills
+        this.drillType = 'drill';
         this.drills.push({ name: "Powers of 2", route: "/drill" });
     }
 
-    onTap(route) {
+    onTapDrill(route) {
         console.log(route);
         this.router.navigate([route]);
     }
